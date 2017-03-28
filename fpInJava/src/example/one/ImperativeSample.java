@@ -1,5 +1,6 @@
-package exaple.one;
+package example.one;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ImperativeSample {
@@ -17,4 +18,12 @@ public class ImperativeSample {
 	public String capitalizeString(String s) {
 		return s.substring(0, 1).toUpperCase() + s.substring(1, s.length());
 	}
+	
+	public static void main(String[] args) {
+		List<String> listOfNames = Arrays.asList("jack", "paul", "alto", "nick");
+		ImperativeSample sample = new ImperativeSample();
+		String concatnatedList = sample.cleanNames(listOfNames);
+		System.out.println(concatnatedList);
+	}
 }
+

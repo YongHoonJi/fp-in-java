@@ -5,6 +5,7 @@ import java.util.List;
 public class ImperativeSample {
 	public String cleanNames(List<String> listOfNames) {
 		StringBuilder result = new StringBuilder();
+		// for는 명령형프로그래밍의 전형적인 예. 초기화 후 값을 설정 그리고 되풀
 		for(String name:listOfNames) {
 			if(name.length() > 1){
 				result.append(capitalizeString(name)).append(",");

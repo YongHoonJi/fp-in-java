@@ -2,8 +2,11 @@ package cache;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
-public class CacheTest {
+import com.google.common.base.Stopwatch;
+
+public class WithCache {
 	private Map<Integer, Integer> sumCache = new HashMap<Integer, Integer>();
 	
 	public Integer sumOfFactors(Integer number) {
@@ -24,6 +27,11 @@ public class CacheTest {
  	}
 	
 	public static void main(String[] args) {
-		System.out.println(new CacheTest().sumOfFactors(new Integer(10)));
+		Stopwatch stopwatch = Stopwatch.createStarted();
+		WithCache cached = new WithCache();
+		System.out.println(cached.sumOfFactors(new Integer(999999999)));
+		System.out.println(cached.sumOfFactors(new Integer(999999999)));
+		stopwatch.stop(); // optional
+		System.out.println("Elapsed time - " + stopwatch.elapsed(TimeUnit.SECONDS));
 	}
 }

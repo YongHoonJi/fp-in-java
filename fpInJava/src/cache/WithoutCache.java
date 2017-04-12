@@ -23,8 +23,13 @@ public class WithoutCache {
 	public static void main(String[] args) {
 		Stopwatch stopwatch = Stopwatch.createStarted();
 		WithoutCache notcached = new WithoutCache();
-		System.out.println(notcached.sumOfFactors(new Integer(999999999)));
-		System.out.println(notcached.sumOfFactors(new Integer(999999999)));
+		int limit = 40000;
+		for(int i=0 ;i<=limit; i++){
+			notcached.sumOfFactors(i);
+		}
+		for(int i=0 ;i<=limit; i++){
+			notcached.sumOfFactors(i);
+		}
 		stopwatch.stop(); // optional
 		System.out.println("Elapsed time - " + stopwatch.elapsed(TimeUnit.SECONDS));		
 	}

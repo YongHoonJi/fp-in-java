@@ -1,4 +1,4 @@
-package oop.sample;
+package oop;
 
 import java.util.ArrayList;
 import java.util.List;

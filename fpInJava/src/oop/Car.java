@@ -1,4 +1,4 @@
-package oop.sample;
+package oop;
 
 public class Car {
 	private int price;

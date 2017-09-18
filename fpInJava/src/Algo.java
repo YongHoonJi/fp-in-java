@@ -11,18 +11,10 @@ public class Algo {
 	static List<List<Integer>> permutationList = new ArrayList<List<Integer>>();  
 	
 	public static void main(String[] args) {
-		relations.put("a", "b,e,g");
-		relations.put("b", "a,c,e,f,g,h");
-		relations.put("c", "b,d,e,f,g,h");
-		relations.put("d", "c,f,h");
-		relations.put("e", "a,b,c,f");
-		relations.put("f", "b,c,d,e");
-		relations.put("g", "a,b,c,h");
-		relations.put("h", "b,c,d,g");
-		
+		setRelations();
 		perm(arr, 0);
 		
-		System.out.println(permutationList.size());
+		System.out.println("순열 크기 :"+permutationList.size());
 		for(List<Integer> nums: permutationList){
 			Map<String, Integer> nodes = getNodeVal(nums);
 			//System.out.println(nodes);
@@ -33,7 +25,6 @@ public class Algo {
 				String relation = relations.get(k);
 				
 				List<String> relArr = Arrays.asList(relation.split(","));
-				
 				for(String bs:relArr){
 					//System.out.println("compare " + k + ":" + relArr);
 					Integer b = nodes.get(bs);
@@ -51,6 +42,19 @@ public class Algo {
 		}
 	}
 	
+	// 관계 설정
+	static void setRelations(){
+		relations.put("a", "b,e,g");
+		relations.put("b", "a,c,e,f,g,h");
+		relations.put("c", "b,d,e,f,g,h");
+		relations.put("d", "c,f,h");
+		relations.put("e", "a,b,c,f");
+		relations.put("f", "b,c,d,e");
+		relations.put("g", "a,b,c,h");
+		relations.put("h", "b,c,d,g");
+	}
+	
+	// 노드에 숫자 설정
 	static Map<String, Integer> getNodeVal(List<Integer> nl) {
 		Map<String, Integer> nodes = new HashMap<>();
 		for(int inx=0; inx<nl.size(); inx++){
@@ -67,6 +71,7 @@ public class Algo {
 		return nodes;
 	}
 	
+	// 인접 여부 체크
 	public static boolean isAdjacent(Integer a, Integer b){
 		// minus
 		if( a - 1 == b && a - 1 != 0) {
@@ -82,7 +87,7 @@ public class Algo {
 		
 	}
 	
-	
+	// 순열 생성
 	public static void perm(int[] arr, int pivot) {
 		if (pivot == arr.length) {
 			permutationList.add(toList(arr));
